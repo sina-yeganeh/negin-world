@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07061a">
+<title>Negin World</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AA%90%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>
+  /* تنظیمات عمومی (این بخش رمزنگاری نشده و برای همه قابل دیدنه) */
+  window.NW_CONFIG = {
+    hint: "راهنما: فامیلیت، به انگلیسی و با حروف کوچیک 😉"
+  };
+</script>
+<script src="data.enc.js"></script>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<main id="viewport" aria-label="نقشه‌ی دنیای نگین">
+  <div id="world">
+    <svg id="links" width="1" height="1" aria-hidden="true"></svg>
+    <div id="nodes"></div>
+  </div>
+</main>
+
+<header id="topbar" hidden>
+  <div class="brand"><span class="brand-star">✦</span><span class="brand-name">Negin World</span></div>
+  <div class="tools">
+    <button class="tbtn" id="btnQuote" title="یه جمله‌ی نگینی" aria-label="جمله‌ی تصادفی">
+      <svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 9.5h7M8.5 12.5h4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <button class="tbtn" id="btnExpand" title="باز کردن همه‌ی سیاره‌ها" aria-label="باز/بستن همه">
+      <svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z" fill="currentColor"/></svg>
+    </button>
+    <button class="tbtn" id="btnFit" title="دیدن کل دنیا" aria-label="دیدن کل دنیا">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div id="editbar" hidden>
+  <span class="eb-title">✏️ حالت ویرایش</span>
+  <button id="ebAdd">+ شاخه‌ی جدید</button>
+  <button id="ebExport" class="primary">💾 خروجی برای گیت‌هاب</button>
+  <button id="ebMore">⋯</button>
+  <div id="ebMenu" hidden>
+    <button data-act="backup">📦 دانلود پشتیبان (JSON)</button>
+    <button data-act="import">📂 وارد کردن پشتیبان</button>
+    <button data-act="reset">↩️ برگشت به نسخه‌ی اصلی فایل</button>
+    <button data-act="exit">🚪 خروج از حالت ویرایش</button>
+  </div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+</div>
+
+<aside id="panel" aria-live="polite"></aside>
+
+<div id="hint" hidden>بکش تا بچرخی · زوم کن · روی سیاره‌ها بزن</div>
+<div id="toast" role="status"></div>
+<div id="lightbox" hidden></div>
+<div id="modal" hidden></div>
+
+<section id="gate">
+  <div class="gate-card">
+    <div class="gate-planet" aria-hidden="true"><span></span></div>
+    <h1 class="gate-title">Negin World</h1>
+    <p class="gate-sub">این دنیا قفله 🔐 رمزش رو بزن تا درش باز شه</p>
+    <form id="gateForm" autocomplete="off">
+      <input id="gatePass" type="password" placeholder="رمز" dir="ltr" aria-label="رمز" autocapitalize="off" spellcheck="false">
+      <button type="submit" id="gateBtn">ورود ✨</button>
+    </form>
+    <label class="gate-remember"><input type="checkbox" id="gateRemember"> رمز رو روی این دستگاه یادت بمونه</label>
+    <p class="gate-hint" id="gateHint"></p>
+    <p class="gate-err" id="gateErr"></p>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
